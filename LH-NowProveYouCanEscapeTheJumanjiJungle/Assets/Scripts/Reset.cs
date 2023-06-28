@@ -30,7 +30,7 @@ public class Reset : MonoBehaviour
         if(other.gameObject.CompareTag("end")){
             stars.Play();
             player.SetActive(false);
-            Invoke("EndScreen", 0.25f);
+            SceneManager.LoadScene(1);
         }
     }
 

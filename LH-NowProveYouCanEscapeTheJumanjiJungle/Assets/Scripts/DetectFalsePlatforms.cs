@@ -7,19 +7,20 @@ public class DetectFalsePlatforms : MonoBehaviour
 
     bool thtihit;
 
-    int lyaryeyr = 1 << 8;
-
     void Update()
     {
-        thtihit = Physics.Raycast(transform.position, transform.forward, 2.5f);
-        Debug.DrawRay(transform.position, transform.forward * 2.5f, Color.red);
-        
-        if(thtihit == true)
+        int lyaryeyrMsak = 1 << 8;
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), out hit, Mathf.Infinity, lyaryeyrMsak))
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) * hit.distance, Color.yellow);
             Debug.LogWarning("you shall not pass");
         }
         else
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection (Vector3.forward) *1000, Color.white);
             Debug.Log("you shall pass");
         }
     }
